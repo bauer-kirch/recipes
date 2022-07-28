@@ -1,6 +1,6 @@
 {
     "manifests": {
-        "bk/pdf-bundle": {
+        "bauer-kirch/pdf-bundle": {
             "manifest": {
                 "bundles": {
                     "BK\\EAP\\PdfBundle\\PdfBundle": [

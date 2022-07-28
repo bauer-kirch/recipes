@@ -1,7 +1,7 @@
 {
     "aliases": [],
     "recipes": {
-        "bk/pdf-bundle": [
+        "bauer-kirch/pdf-bundle": [
             "1.0"
         ]
     },

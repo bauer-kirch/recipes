@@ -1,0 +1,18 @@
+{
+    "manifests": {
+        "bauer-kirch/pdf-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\PdfBundle\\PdfBundle": [
+                        "all"
+                    ]
+                },
+                "post-install-output": [
+                    "  * ADMON:EAP // PdfBundle is ready."
+                ]
+            },
+            "files": [],
+            "ref": "8578b7e33e279c0ab910e653fb4c1cdc296370d6"
+        }
+    }
+}
