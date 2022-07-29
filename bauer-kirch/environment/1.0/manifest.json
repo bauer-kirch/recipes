@@ -1,0 +1,52 @@
+{
+    "copy-from-package": {
+        "docker/": "docker/"
+    },
+    "env": {
+        "#1": "WARNING: do not use values with variable replacements (e.g. ${MY_VAR}) in this file!",
+        "#2": "Docker will not replace them."
+    },
+    "docker-compose": {
+        "docker-compose.yml": {
+            "services": [
+                "nginx:",
+                "  image: nginx:latest",
+                "  ports:",
+                "    - ${PORT_NGINX}:80",
+                "    - ${PORT_NGINX_SSL}:443",
+                "    - ${PORT_PREVIEW_B8K_SSL}:443",
+                "  volumes:",
+                "    - ./public:/var/www/public:cached",
+                "    - ./var/certs:/etc/ssl/certs:cached",
+                "    - ./var/nginx-include.d:/etc/nginx/include.d:cached",
+                "",
+                "php:",
+                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:8.1'",
+                "  volumes:",
+                "    - ./:/var/www/:cached",
+                "    - ./docker/php/container-started.sh:/var/www/bin/container-started.sh",
+                "    - ${COMPOSER_CACHE_PATH}:/var/www/.composer/cache:cached",
+                "  environment:",
+                "    CONTAINER_STARTED: /var/www/bin/container-started.sh",
+                "    HISTFILE: /var/www/app/var/.bash_history",
+                "    PHP_XDEBUG_REMOTE_HOST: '${PHP_XDEBUG_REMOTE_HOST:-host.docker.internal}'",
+                "    # Move the Symfony cache dir outside the docker mount to improve performance",
+                "    # https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-cache-directory",
+                "    APP_CACHE_DIR: /tmp/symfony_cache",
+                "  env_file: .env",
+                "",
+                "webpack:",
+                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
+                "  volumes:",
+                "    - ./:/var/www/:cached",
+                "    - npm-cache:/root/.npm:cached",
+                "  env_file: .env",
+                "",
+                "mailcatcher:",
+                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'",
+                ""
+            ],
+            "volumes": ["npm-cache:"]
+        }
+    }
+}

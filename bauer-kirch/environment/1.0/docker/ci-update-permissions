@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Paths and configuration
+BASEDIR="$(cd "$(dirname "$0")/.." && pwd)"
+DOT_ENV=$BASEDIR/.env
+
+# make sure the cypress/screenshots and cypress/videos files are owned by gitlab-runner user
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
+docker run \
+  --workdir /var/www/app \
+  --env-file $DOT_ENV \
+  --env NPM_CONFIG_CACHE=/var/www/app/var/volumes/.npm \
+  --rm \
+  -v $BASEDIR/app:/var/www/app \
+  node:12 \
+  bash -c "chown -R $USER_ID:$GROUP_ID cypress/"

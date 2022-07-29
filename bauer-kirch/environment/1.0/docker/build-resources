@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Paths and configuration
+BASEDIR="$(cd "$(dirname "$0")/.." && pwd)"
+DOT_ENV=$BASEDIR/.env
+
+docker run \
+  --user $(id -u):$(id -g) \
+  --workdir /var/www/app \
+  --env-file $DOT_ENV \
+  --env NPM_CONFIG_CACHE=/var/www/app/var/volumes/.npm \
+  --rm \
+  -v $BASEDIR/app:/var/www/app \
+  node:12 \
+  bash -c "npm install; npm run build"
