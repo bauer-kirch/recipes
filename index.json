@@ -1,11 +1,23 @@
 {
     "aliases": [],
     "recipes": {
+        "bauer-kirch/environment": [
+            "1.0"
+        ],
         "bauer-kirch/pdf-bundle": [
             "1.0"
+        ],
+        "doctrine/doctrine-bundle": [
+            "2.4"
         ]
     },
-    "recipe-conflicts": [],
+    "recipe-conflicts": {
+        "doctrine/doctrine-bundle": {
+            "2.4": {
+                "symfony/framework-bundle": "<5.3"
+            }
+        }
+    },
     "versions": {
         "splits": []
     },
