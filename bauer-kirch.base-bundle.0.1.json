@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "bauer-kirch/base-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\BaseBundle\\BaseBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "a70c5326e66a63c97ee7fb2780b6605a43d08ed1"
+        }
+    }
+}

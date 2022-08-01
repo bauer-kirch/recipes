@@ -1,6 +1,9 @@
 {
     "aliases": [],
     "recipes": {
+        "bauer-kirch/base-bundle": [
+            "0.1"
+        ],
         "bauer-kirch/environment": [
             "1.0"
         ],
