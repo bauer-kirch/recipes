@@ -1,5 +1,5 @@
 {
-    "copy-from-package": {
+    "copy-from-recipe": {
         "docker/": "docker/"
     },
     "env": {
