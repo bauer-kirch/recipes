@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "bauer-kirch/security-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\SecurityBundle\\SecurityBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "c54ffad0001dec8a157076e9aca2a21ac3d8f6be"
+        }
+    }
+}

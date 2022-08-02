@@ -10,6 +10,9 @@
         "bauer-kirch/pdf-bundle": [
             "1.0"
         ],
+        "bauer-kirch/security-bundle": [
+            "0.1"
+        ],
         "doctrine/doctrine-bundle": [
             "2.4"
         ]
