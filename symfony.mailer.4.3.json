@@ -1,0 +1,25 @@
+{
+    "manifests": {
+        "symfony/mailer": {
+            "manifest": {
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                },
+                "env": {
+                    "MAILER_DSN": "smtp://mailhog:1025"
+                }
+            },
+            "files": {
+                "config/packages/mailer.yaml": {
+                    "contents": [
+                        "framework:",
+                        "    mailer:",
+                        "        dsn: '%env(MAILER_DSN)%'"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "a175ad02f8327baf6e8518536176e0513cdf4896"
+        }
+    }
+}

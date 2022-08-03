@@ -1,5 +1,8 @@
 {
-    "aliases": [],
+    "aliases": {
+        "mail": "symfony/mailer",
+        "mailer": "symfony/mailer"
+    },
     "recipes": {
         "bauer-kirch/base-bundle": [
             "0.1"
@@ -15,6 +18,9 @@
         ],
         "doctrine/doctrine-bundle": [
             "2.4"
+        ],
+        "symfony/mailer": [
+            "4.3"
         ]
     },
     "recipe-conflicts": {
