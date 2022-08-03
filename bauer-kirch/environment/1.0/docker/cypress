@@ -31,7 +31,7 @@ docker run \
 # needs to be updated later in job's after_script
 docker run \
   --ipc=host \
-  --network ${COMPOSE_PROJECT_NAME}_default \
+  --network ${CI_PROJECT_NAME}_default \
   --workdir /var/www/app \
   --env-file $DOT_ENV \
   --env CYPRESS_BASE_URL=https://nginx \

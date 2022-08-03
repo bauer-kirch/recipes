@@ -2,15 +2,19 @@
     "copy-from-recipe": {
         "docker/": "docker/"
     },
+    "env": {
+        "#1": "WARNING: do not use values with variable replacements (e.g. ${MY_VAR}) in this file!",
+        "#2": "Docker will not replace them."
+    },
     "docker-compose": {
         "docker-compose.yml": {
             "services": [
                 "nginx:",
                 "  image: gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/nginx:latest",
                 "  ports:",
-                "    - ${PORT_NGINX}:80",
-                "    - ${PORT_NGINX_SSL}:443",
-                "    - ${PORT_PREVIEW_B8K_SSL}:443",
+                "    - ${PORT_NGINX:-80}:80",
+                "    - ${PORT_NGINX_SSL:-443}:443",
+                "    - ${PORT_PREVIEW_B8K_SSL:-6443}:443",
                 "  volumes:",
                 "    - ./public:/var/www/app/public:cached",
                 "    - ./var/certs:/etc/ssl/certs:cached",
@@ -22,7 +26,7 @@
                 "  volumes:",
                 "    - ./:/var/www/app/:cached",
                 "    - ./docker/php/container-started.sh:/var/www/bin/container-started.sh",
-                "    - ${COMPOSER_CACHE_PATH}:/var/www/app/.composer/cache:cached",
+                "    - ${COMPOSER_CACHE_PATH:-~/.cache/composer}:/var/www/app/.composer/cache:cached",
                 "  environment:",
                 "    CONTAINER_STARTED: /var/www/bin/container-started.sh",
                 "    HISTFILE: /var/www/app/var/.bash_history",

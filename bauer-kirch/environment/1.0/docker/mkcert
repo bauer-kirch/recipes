@@ -12,4 +12,4 @@ test -f $DOT_ENV_LOCAL && source $DOT_ENV_LOCAL
 
 # Create certificates
 mkdir -p $CERTS_DIR
-mkcert -key-file $CERTS_DIR/app-key.pem -cert-file $CERTS_DIR/app-cert.pem localhost 127.0.0.1 ::1 $MKCERT_CUSTOM_HOSTS
+mkcert -key-file $CERTS_DIR/app-key.pem -cert-file $CERTS_DIR/app-cert.pem localhost 127.0.0.1 ::1 $1
