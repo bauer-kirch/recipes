@@ -2,10 +2,6 @@
     "copy-from-recipe": {
         "docker/": "docker/"
     },
-    "env": {
-        "#1": "WARNING: do not use values with variable replacements (e.g. ${MY_VAR}) in this file!",
-        "#2": "Docker will not replace them."
-    },
     "docker-compose": {
         "docker-compose.yml": {
             "services": [
