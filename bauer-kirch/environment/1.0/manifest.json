@@ -39,7 +39,7 @@
                 "    - ./:/var/www/app/:cached",
                 "    - npm-cache:/root/.npm:cached",
                 "",
-                "mailcatcher:",
+                "mailhog:",
                 "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'",
                 ""
             ],
