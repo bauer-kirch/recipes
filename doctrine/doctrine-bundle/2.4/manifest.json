@@ -6,7 +6,7 @@
         "config/": "%CONFIG_DIR%/"
     },
     "env": {
-        "DATABASE_URL": "mysql://user:password@127.0.0.1:3306/app?serverVersion=mariadb-10.8&charset=utf8"
+        "DATABASE_URL": "mysql://user:password@database:3306/app?serverVersion=mariadb-10.8.0&charset=utf8"
     },
     "docker-compose": {
         "docker-compose.yml": {
@@ -26,7 +26,7 @@
                 "adminer:",
                 "  image: adminer:latest",
                 "  ports:",
-                "    - 8080:8080",
+                "    - ${ADMINER_PORT:-8080}:8080",
                 "  environment:",
                 "    ADMINER_DEFAULT_SERVER: database",
                 ""
