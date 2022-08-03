@@ -1,7 +1,9 @@
 {
     "copy-from-recipe": {
         "docker/": "docker/",
-        ".gitkeep": "/var/certs/.gitkeep"
+        ".gitkeep": "/var/certs/.gitkeep",
+        ".gitlab-ci.yml": ".gitlab-ci.yml",
+        "phpstan.neon": "phpstan.neon"
     },
     "docker-compose": {
         "docker-compose.yml": {
