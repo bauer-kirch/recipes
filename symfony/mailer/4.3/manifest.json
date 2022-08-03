@@ -1,0 +1,9 @@
+{
+  "copy-from-recipe": {
+      "config/": "%CONFIG_DIR%/"
+  },
+  "env": {
+      "MAILER_DSN": "smtp://mailhog:1025"
+  },
+  "aliases": ["mailer", "mail"]
+}
