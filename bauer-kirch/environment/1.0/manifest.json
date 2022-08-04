@@ -4,9 +4,10 @@
         "/.composer"
     ],
     "copy-from-recipe": {
+        ".gitlab-ci/": ".gitlab-ci/",
         "docker/": "docker/",
-        ".gitkeep": "/var/certs/.gitkeep",
         ".gitlab-ci.yml": ".gitlab-ci.yml",
+        ".gitkeep": "/var/certs/.gitkeep",
         "phpstan.neon": "phpstan.neon"
     },
     "docker-compose": {
