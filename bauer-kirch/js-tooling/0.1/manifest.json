@@ -6,17 +6,5 @@
         ".prettierrc": ".prettierrc",
         ".stylelintrc": ".stylelintrc",
         "jest.config.js": "jest.config.js"
-    },
-    "docker-compose": {
-        "docker-compose.yml": {
-            "services": [
-                "webpack:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
-                "  volumes:",
-                "    - ./:/var/www/app/:cached",
-                "    - npm-cache:/root/.npm:cached"
-            ],
-            "volumes": ["npm-cache:"]
-        }
     }
 }
