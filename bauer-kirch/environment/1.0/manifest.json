@@ -1,14 +1,12 @@
 {
     "gitignore": [
-        "/.idea",
         "/.composer"
     ],
     "copy-from-recipe": {
         ".gitlab-ci/": ".gitlab-ci/",
         "docker/": "docker/",
         ".gitlab-ci.yml": ".gitlab-ci.yml",
-        ".gitkeep": "/var/certs/.gitkeep",
-        "phpstan.neon": "phpstan.neon"
+        ".gitkeep": "/var/certs/.gitkeep"
     },
     "docker-compose": {
         "docker-compose.yml": {

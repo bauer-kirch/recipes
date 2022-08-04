@@ -1,0 +1,10 @@
+{
+    "gitignore": [
+        "/.idea"
+    ],
+    "copy-from-recipe": {
+        ".gitlab-ci/": ".gitlab-ci/",
+        "docker/": "docker/",
+        "phpstan.neon": "phpstan.neon"
+    }
+}

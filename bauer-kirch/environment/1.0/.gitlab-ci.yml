@@ -1,7 +1,7 @@
 stages:
   - test
-  - audit
   - build
+  - audit
   - deploy
 
 include: '.gitlab-ci/*.yml'
