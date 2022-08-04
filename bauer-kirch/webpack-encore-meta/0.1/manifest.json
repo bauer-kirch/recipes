@@ -1,6 +1,11 @@
 {
+    "gitignore": [
+        "/public/build",
+        "/public/webpack-dev"
+    ],
     "copy-from-recipe": {
         ".gitlab-ci/": ".gitlab-ci/",
+        "config/": "%CONFIG_DIR%/",
         "docker/": "docker/"
     },
     "docker-compose": {
