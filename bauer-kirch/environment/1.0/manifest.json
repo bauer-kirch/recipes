@@ -1,4 +1,8 @@
 {
+    "gitignore": [
+        "/.idea",
+        "/.composer"
+    ],
     "copy-from-recipe": {
         "docker/": "docker/",
         ".gitkeep": "/var/certs/.gitkeep",

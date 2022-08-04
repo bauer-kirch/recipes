@@ -3,12 +3,6 @@
 # Paths and configuration
 BASEDIR="$(cd "$(dirname "$0")/.." && pwd)"
 CERTS_DIR=$BASEDIR/var/certs
-DOT_ENV=$BASEDIR/.env
-DOT_ENV_LOCAL=$BASEDIR/.env.local
-
-# Load Env files
-test -f $DOT_ENV && source $DOT_ENV
-test -f $DOT_ENV_LOCAL && source $DOT_ENV_LOCAL
 
 # Create certificates
 mkdir -p $CERTS_DIR
