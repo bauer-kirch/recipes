@@ -39,9 +39,7 @@
             }
         }
     },
-    "versions": {
-        "splits": []
-    },
+    "versions": [],
     "branch": "tree",
     "is_contrib": false,
     "_links": {
