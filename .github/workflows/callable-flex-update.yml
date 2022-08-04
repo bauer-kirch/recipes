@@ -41,7 +41,7 @@ jobs:
                 name: Update Flex endpoint
                 run: |
                     mkdir .github/flex-endpoint
-                    git ls-tree HEAD */*/* | php .github/recipes-checker-main/run generate:flex-endpoint ${{ github.repository }} ${{ inputs.branch }} main .github/flex-endpoint ${{ inputs.versions_json }} ${{ inputs.contrib && '--contrib' || '' }}
+                    git ls-tree HEAD */*/* | php .github/recipes-checker-main/run generate:flex-endpoint ${{ github.repository }} ${{ inputs.branch }} main .github/flex-endpoint ${{ inputs.contrib && '--contrib' || '' }}
                     git switch main
                     git rm -q --ignore-unmatch *.json
                     mv .github/flex-endpoint/*.json .
