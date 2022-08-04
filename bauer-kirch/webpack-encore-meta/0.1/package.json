@@ -1,9 +1,39 @@
 {
+  "devDependencies": {
+      "core-js": "^3.23.0",
+      "regenerator-runtime": "^0.13.9",
+      "webpack-notifier": "^1.15.0"
+  },
   "dependencies": {
     "@hotwired/stimulus": "^3.0.0",
     "@symfony/stimulus-bridge": "^3.2.0",
     "@symfony/webpack-encore": "^3.0.0"
   },
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress",
+    "test": "jest",
+    "eslint": "eslint ./assets --ext .js,.ts,.vue",
+    "stylelint": "stylelint \"./assets/**/*.vue\" \"./assets/**/*.*css\"",
+    "prettier": "prettier --config .prettierrc --write \"./assets/**/*.{vue,js,ts,json,md}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "(src|tests)/**/*.php": [
+      "docker/phpunit",
+      "docker/phpstan"
+    ],
+    "assets/**/*.{vue,js,ts}": [
+      "npx eslint --cache --fix",
+      "jest --findRelatedTests"
+    ]
+  }
 }
