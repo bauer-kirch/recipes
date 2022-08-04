@@ -38,12 +38,6 @@
                 "    # https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-cache-directory",
                 "    APP_CACHE_DIR: /tmp/symfony_cache",
                 "",
-                "webpack:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
-                "  volumes:",
-                "    - ./:/var/www/app/:cached",
-                "    - npm-cache:/root/.npm:cached",
-                "",
                 "mailhog:",
                 "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'",
                 ""

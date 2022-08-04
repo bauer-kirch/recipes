@@ -1,0 +1,18 @@
+{
+    "copy-from-recipe": {
+        ".gitlab-ci/": ".gitlab-ci/",
+        "docker/": "docker/"
+    },
+    "docker-compose": {
+        "docker-compose.yml": {
+            "services": [
+                "webpack:",
+                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
+                "  volumes:",
+                "    - ./:/var/www/app/:cached",
+                "    - npm-cache:/root/.npm:cached"
+            ],
+            "volumes": ["npm-cache:"]
+        }
+    }
+}
