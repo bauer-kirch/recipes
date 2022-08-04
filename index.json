@@ -16,6 +16,9 @@
         "bauer-kirch/security-bundle": [
             "0.1"
         ],
+        "bauer-kirch/webpack-encore-meta": [
+            "0.1"
+        ],
         "doctrine/doctrine-bundle": [
             "2.4"
         ],

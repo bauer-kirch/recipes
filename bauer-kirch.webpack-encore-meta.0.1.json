@@ -1,0 +1,92 @@
+{
+    "manifests": {
+        "bauer-kirch/webpack-encore-meta": {
+            "manifest": {
+                "copy-from-recipe": {
+                    ".gitlab-ci/": ".gitlab-ci/",
+                    "docker/": "docker/"
+                },
+                "docker-compose": {
+                    "docker-compose.yml": {
+                        "services": [
+                            "webpack:",
+                            "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
+                            "  volumes:",
+                            "    - ./:/var/www/app/:cached",
+                            "    - npm-cache:/root/.npm:cached"
+                        ],
+                        "volumes": [
+                            "npm-cache:"
+                        ]
+                    }
+                }
+            },
+            "files": {
+                ".gitlab-ci/node.yml": {
+                    "contents": [
+                        "variables:",
+                        "  NODE_IMAGE: \"gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest\"",
+                        "",
+                        "build_npm:",
+                        "  stage: build",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $NODE_IMAGE",
+                        "  script:",
+                        "    - time npm install",
+                        "    - time npm run build",
+                        "  artifacts:",
+                        "    paths:",
+                        "      - public/build",
+                        "  only:",
+                        "    - schedules",
+                        "",
+                        "audit_npm:",
+                        "  stage: audit",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $NODE_IMAGE",
+                        "  script:",
+                        "    - npm audit --json",
+                        "  allow_failure: true",
+                        "  only:",
+                        "    variables:",
+                        "      - $SCHEDULE_AUDIT",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "docker/build-resources": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "# Paths and configuration",
+                        "BASEDIR=\"$(cd \"$(dirname \"$0\")/..\" && pwd)\"",
+                        "DOT_ENV=$BASEDIR/.env",
+                        "",
+                        "docker run \\",
+                        "  --user $(id -u):$(id -g) \\",
+                        "  --workdir /var/www/app \\",
+                        "  --env-file $DOT_ENV \\",
+                        "  --env NPM_CONFIG_CACHE=/var/www/app/var/volumes/.npm \\",
+                        "  --rm \\",
+                        "  -v $BASEDIR/app:/var/www/app \\",
+                        "  node:12 \\",
+                        "  bash -c \"npm install; npm run build\"",
+                        ""
+                    ],
+                    "executable": true
+                },
+                "docker/npm": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "docker-compose exec webpack npm \"$@\""
+                    ],
+                    "executable": true
+                }
+            },
+            "ref": "3e7c410834d86ef1781e7cc5a8133b93163c994b"
+        }
+    }
+}
