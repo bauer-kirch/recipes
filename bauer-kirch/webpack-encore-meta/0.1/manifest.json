@@ -6,7 +6,8 @@
     "copy-from-recipe": {
         ".gitlab-ci/": ".gitlab-ci/",
         "config/": "%CONFIG_DIR%/",
-        "docker/": "docker/"
+        "docker/": "docker/",
+        "webpack.config.js": "webpack.config.js"
     },
     "docker-compose": {
         "docker-compose.yml": {
