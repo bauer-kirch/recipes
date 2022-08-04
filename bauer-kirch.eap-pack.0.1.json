@@ -1,0 +1,105 @@
+{
+    "manifests": {
+        "bauer-kirch/eap-pack": {
+            "manifest": {
+                "gitignore": [
+                    "/.idea"
+                ],
+                "copy-from-recipe": {
+                    ".gitlab-ci/": ".gitlab-ci/",
+                    "docker/": "docker/",
+                    "phpstan.neon": "phpstan.neon"
+                }
+            },
+            "files": {
+                ".gitlab-ci/php.yml": {
+                    "contents": [
+                        "variables:",
+                        "  PHP_IMAGE: \"gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:php-8.1\"",
+                        "  SYMFONY_PHPUNIT_DIR: \"vendor/bin/.phpunit\"",
+                        "",
+                        "unit_tests_php:",
+                        "  stage: test",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $PHP_IMAGE",
+                        "  script:",
+                        "    - time composer install",
+                        "    # PHPUnit needs to be executed before phpstan, because with phpunit-bridge",
+                        "    # the phpunit vendor dir is only created on first test execution",
+                        "    - time php bin/phpunit --log-junit phpunit-log.xml",
+                        "    - time vendor/bin/phpstan analyse -c phpstan.neon",
+                        "  artifacts:",
+                        "    when: always",
+                        "    paths:",
+                        "      - phpunit-log.xml",
+                        "    reports:",
+                        "      junit: phpunit-log.xml",
+                        "",
+                        "audit_depdash:",
+                        "  stage: audit",
+                        "  tags:",
+                        "    - depdash",
+                        "  script:",
+                        "    - /opt/bauer-kirch/depdash-composer-client/bin/console composer:report --gitlab",
+                        "    - /opt/bauer-kirch/depdash-composer-client/bin/console composer:security-report",
+                        "  allow_failure: true",
+                        "  only:",
+                        "    variables:",
+                        "      - $SCHEDULE_AUDIT"
+                    ],
+                    "executable": false
+                },
+                "docker/console": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "docker-compose exec php bin/console \"$@\""
+                    ],
+                    "executable": true
+                },
+                "docker/phpstan": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "docker-compose exec -T php vendor/bin/phpstan analyse -c phpstan.neon"
+                    ],
+                    "executable": true
+                },
+                "docker/phpunit": {
+                    "contents": [
+                        "#!/usr/bin/env bash",
+                        "",
+                        "docker-compose exec -T php php bin/phpunit"
+                    ],
+                    "executable": true
+                },
+                "phpstan.neon": {
+                    "contents": [
+                        "includes:",
+                        "    - vendor/phpstan/phpstan-deprecation-rules/rules.neon",
+                        "    - vendor/phpstan/phpstan-phpunit/extension.neon",
+                        "    - vendor/phpstan/phpstan-phpunit/rules.neon",
+                        "    - vendor/phpstan/phpstan-strict-rules/rules.neon",
+                        "    - vendor/phpstan/phpstan-symfony/rules.neon",
+                        "    - vendor/phpstan/phpstan-symfony/extension.neon",
+                        "",
+                        "",
+                        "parameters:",
+                        "    parallel:",
+                        "        processTimeout: 3000.0",
+                        "    level: max",
+                        "    paths:",
+                        "        - src",
+                        "        - tests",
+                        "    excludePaths:",
+                        "        - tests/bootstrap.php",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "4fc2d1814fe9817efbf6256b9f3e25b9c4d1eee7"
+        }
+    }
+}

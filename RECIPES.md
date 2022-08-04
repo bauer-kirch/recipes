@@ -5,6 +5,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | Package | Latest Recipe | Aliases |
 | --- | --- | --- |
 | [bauer-kirch/base-bundle](https://packagist.org/packages/bauer-kirch/base-bundle) | [0.1](bauer-kirch/base-bundle/0.1) |  |
+| [bauer-kirch/eap-pack](https://packagist.org/packages/bauer-kirch/eap-pack) | [0.1](bauer-kirch/eap-pack/0.1) |  |
 | [bauer-kirch/environment](https://packagist.org/packages/bauer-kirch/environment) | [1.0](bauer-kirch/environment/1.0) |  |
 | [bauer-kirch/js-tooling](https://packagist.org/packages/bauer-kirch/js-tooling) | [0.1](bauer-kirch/js-tooling/0.1) |  |
 | [bauer-kirch/pdf-bundle](https://packagist.org/packages/bauer-kirch/pdf-bundle) | [1.0](bauer-kirch/pdf-bundle/1.0) |  |
