@@ -1,0 +1,48 @@
+{
+  "devDependencies": {
+    "@types/jest": "^28.1.6",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-es5": "^1.5.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "jest-config": "^28.1.3",
+    "jest-transform-stub": "^2.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-recommended": "^8.0.0",
+    "vue-jest": "^3.0.7"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "eslint": "eslint ./assets --ext .js,.ts,.vue",
+    "stylelint": "stylelint \"./assets/**/*.vue\" \"./assets/**/*.*css\"",
+    "prettier": "prettier --config .prettierrc --write \"./assets/**/*.{vue,js,ts,json,md}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "(src|tests)/**/*.php": [
+      "docker/phpunit",
+      "docker/phpstan"
+    ],
+    "assets/**/*.{vue,js,ts}": [
+      "npx eslint --cache --fix",
+      "jest --findRelatedTests"
+    ]
+  }
+}

@@ -1,21 +1,28 @@
 variables:
   NODE_IMAGE: "gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest"
 
-build_npm:
-  stage: build
+unit_tests_js:
+  stage: test
   tags:
     - docker
   image: $NODE_IMAGE
   script:
+    - cd app
     - time npm install
-    - time npm run build
-  artifacts:
-    paths:
-      - public/build
-  only:
-    - schedules
+    - time npm run eslint
+    - time npm run test
 
-audit_npm:
+linting_css:
+  stage: test
+  tags:
+    - docker
+  image: $NODE_IMAGE
+  script:
+    - cd app
+    - time npm install
+    - time npm run stylelint
+
+audit_js:
   stage: audit
   tags:
     - docker
