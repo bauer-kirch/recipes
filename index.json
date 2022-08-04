@@ -10,6 +10,9 @@
         "bauer-kirch/environment": [
             "1.0"
         ],
+        "bauer-kirch/js-tooling": [
+            "0.1"
+        ],
         "bauer-kirch/pdf-bundle": [
             "1.0"
         ],

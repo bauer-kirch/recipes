@@ -1,0 +1,178 @@
+{
+    "manifests": {
+        "bauer-kirch/js-tooling": {
+            "manifest": {
+                "copy-from-recipe": {
+                    ".gitlab-ci/": ".gitlab-ci/",
+                    ".eslintignore": ".eslintignore",
+                    ".eslintrc.js": ".eslintrc.js",
+                    ".prettierrc": ".prettierrc",
+                    ".stylelintrc": ".stylelintrc",
+                    "jest.config.js": "jest.config.js"
+                },
+                "docker-compose": {
+                    "docker-compose.yml": {
+                        "services": [
+                            "webpack:",
+                            "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
+                            "  volumes:",
+                            "    - ./:/var/www/app/:cached",
+                            "    - npm-cache:/root/.npm:cached"
+                        ],
+                        "volumes": [
+                            "npm-cache:"
+                        ]
+                    }
+                }
+            },
+            "files": {
+                ".eslintignore": {
+                    "contents": [
+                        "node_modules/"
+                    ],
+                    "executable": false
+                },
+                ".eslintrc.js": {
+                    "contents": [
+                        "module.exports = {",
+                        "  root: true,",
+                        "  env: {",
+                        "      browser: true,",
+                        "      es6: true,",
+                        "  },",
+                        "  extends: [",
+                        "      'airbnb-base',",
+                        "      'plugin:cypress/recommended',",
+                        "      'plugin:eslint-comments/recommended',",
+                        "      'plugin:jest/recommended',",
+                        "      'plugin:promise/recommended',",
+                        "      'plugin:vue/recommended',",
+                        "      // prettier needs to go last",
+                        "      'prettier',",
+                        "  ],",
+                        "  plugins: [",
+                        "      'vue',",
+                        "      'jest',",
+                        "      'cypress',",
+                        "      'prettier',",
+                        "  ],",
+                        "  parser: 'vue-eslint-parser',",
+                        "  parserOptions: {",
+                        "      ecmaVersion: 2019,",
+                        "      sourceType: 'module',",
+                        "  },",
+                        "  rules: {",
+                        "      curly: ['error', 'all'],",
+                        "      'prettier/prettier': 'error',",
+                        "      'eslint-comments/no-unused-disable': 'error',",
+                        "      'promise/prefer-await-to-then': 'error',",
+                        "      'promise/prefer-await-to-callbacks': 'error',",
+                        "      'import/prefer-default-export': 'off',",
+                        "      'import/no-mutable-exports': 'error',",
+                        "      'import/exports-last': 'error',",
+                        "      /*",
+                        "       * To allow camel case prop names, this rule needs to be disabled, because",
+                        "       * it enforces \"my-prop\" instead of \"myProp\".",
+                        "       */",
+                        "      'vue/attribute-hyphenation': [0, { ignore: ['custom-prop'] }],",
+                        "  },",
+                        "};",
+                        ""
+                    ],
+                    "executable": false
+                },
+                ".gitlab-ci/js-tooling.yml": {
+                    "contents": [
+                        "variables:",
+                        "  NODE_IMAGE: \"gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest\"",
+                        "",
+                        "unit_tests_js:",
+                        "  stage: test",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $NODE_IMAGE",
+                        "  script:",
+                        "    - cd app",
+                        "    - time npm install",
+                        "    - time npm run eslint",
+                        "    - time npm run test",
+                        "",
+                        "linting_css:",
+                        "  stage: test",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $NODE_IMAGE",
+                        "  script:",
+                        "    - cd app",
+                        "    - time npm install",
+                        "    - time npm run stylelint",
+                        "",
+                        "audit_js:",
+                        "  stage: audit",
+                        "  tags:",
+                        "    - docker",
+                        "  image: $NODE_IMAGE",
+                        "  script:",
+                        "    - npm audit --json",
+                        "  allow_failure: true",
+                        "  only:",
+                        "    variables:",
+                        "      - $SCHEDULE_AUDIT"
+                    ],
+                    "executable": false
+                },
+                ".prettierrc": {
+                    "contents": [
+                        "{",
+                        "  \"singleQuote\": true,",
+                        "  \"trailingComma\": \"all\",",
+                        "  \"endOfLine\": \"lf\"",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                ".stylelintrc": {
+                    "contents": [
+                        "{",
+                        "  \"extends\": \"stylelint-config-recommended\"",
+                        "}",
+                        ""
+                    ],
+                    "executable": false
+                },
+                "jest.config.js": {
+                    "contents": [
+                        "const { defaults } = require('jest-config');",
+                        "",
+                        "module.exports = {",
+                        "    verbose: true,",
+                        "    moduleFileExtensions: [...defaults.moduleFileExtensions, 'vue'],",
+                        "    testMatch: ['**/*.test.js'],",
+                        "    transform: {",
+                        "        '^.+\\\\.js$': 'babel-jest',",
+                        "        '^.+\\\\.ts$': 'babel-jest',",
+                        "        '^.+\\\\.vue$': 'vue-jest',",
+                        "        '.+\\\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':",
+                        "            'jest-transform-stub',",
+                        "    },",
+                        "    transformIgnorePatterns: [",
+                        "        'node_modules/(?!(babel-jest|jest-vue-preprocessor)/)',",
+                        "    ],",
+                        "    cacheDirectory: '<rootDir>/node_modules/.cache/jest',",
+                        "    collectCoverageFrom: ['assets/**/*.{js,ts,vue}'],",
+                        "    coverageThreshold: {",
+                        "        global: {",
+                        "            statements: 50,",
+                        "        },",
+                        "    },",
+                        "};",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "2f8ae4c2ae768e7a7d5d84d5eb33203df58ef85f"
+        }
+    }
+}
