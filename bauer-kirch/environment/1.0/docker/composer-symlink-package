@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+BASEDIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd $BASEDIR
+
+echo "Adding path repository $2"
+composer config repositories.$1 --json "{\"type\": \"path\", \"url\": \"$2\", \"options\": {\"symlink\": true } }"
+
+echo "Symlink composer package $1 to local path $2"
+composer require $1
