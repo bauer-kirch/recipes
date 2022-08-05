@@ -44,12 +44,11 @@ unit_tests_php:
 
 audit_depdash:
   stage: audit
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   tags:
     - depdash
   script:
     - /opt/bauer-kirch/depdash-composer-client/bin/console composer:report --gitlab
     - /opt/bauer-kirch/depdash-composer-client/bin/console composer:security-report
   allow_failure: true
-  only:
-    variables:
-      - $SCHEDULE_AUDIT

@@ -7,7 +7,7 @@ This project is based on the EAP PHP Stack.
 
 ## Start application
 ```bash
-docker/mkcert # only on first start
+docker/mkcert # only needed on first start
 docker-compose up -d
 ```
 
