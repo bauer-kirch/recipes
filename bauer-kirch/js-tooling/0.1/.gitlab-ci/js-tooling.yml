@@ -1,14 +1,37 @@
 variables:
   NODE_IMAGE: "gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest"
 
+.dependencies_cache:
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm
+    policy: pull
+
+linting_js:
+  stage: test
+  tags:
+    - docker
+  image: $NODE_IMAGE
+  extends: .dependencies_cache
+  cache:
+    policy: pull-push
+  script:
+    - time npm install
+    - time npm run eslint
+
 unit_tests_js:
   stage: test
   tags:
     - docker
   image: $NODE_IMAGE
+  extends: .dependencies_cache
+  cache:
+    policy: pull-push
   script:
     - time npm install
-    - time npm run eslint
     - time npm run test
 
 linting_css:
@@ -16,6 +39,7 @@ linting_css:
   tags:
     - docker
   image: $NODE_IMAGE
+  extends: .dependencies_cache
   script:
     - time npm install
     - time npm run stylelint

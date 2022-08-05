@@ -2,17 +2,39 @@ variables:
   PHP_IMAGE: "gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:php-8.1"
   SYMFONY_PHPUNIT_DIR: "vendor/bin/.phpunit"
 
+setup_php:
+  stage: setup
+  tags:
+    - docker
+  image: $PHP_IMAGE
+  script:
+    - time composer install
+  cache:
+    key:
+      files:
+        - composer.lock
+    paths:
+      - vendor
+  artifacts:
+    expire_in: 30m
+    paths:
+      - vendor
+
+linting_php:
+  stage: test
+  tags:
+    - docker
+  image: $PHP_IMAGE
+  script:
+    - time vendor/bin/phpstan analyse -c phpstan.neon
+
 unit_tests_php:
   stage: test
   tags:
     - docker
   image: $PHP_IMAGE
   script:
-    - time composer install
-    # PHPUnit needs to be executed before phpstan, because with phpunit-bridge
-    # the phpunit vendor dir is only created on first test execution
     - time php bin/phpunit --log-junit phpunit-log.xml
-    - time vendor/bin/phpstan analyse -c phpstan.neon
   artifacts:
     when: always
     paths:
