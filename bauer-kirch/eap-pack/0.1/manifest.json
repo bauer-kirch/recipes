@@ -5,6 +5,7 @@
     "copy-from-recipe": {
         ".gitlab-ci/": ".gitlab-ci/",
         "docker/": "docker/",
+        "migrations/": "migrations/",
         "phpstan.neon": "phpstan.neon",
         "README.md": "README.md"
     }
