@@ -1,0 +1,2 @@
+eap_security:
+  user_entity_class: ~ # Replace with your app user entity class name
