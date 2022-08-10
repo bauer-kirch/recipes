@@ -3,6 +3,13 @@
 BASEDIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd $BASEDIR
 
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo "Missing parameters."
+  echo ""
+  echo "Usage: docker/composer-symlink-package \${package-name} \${path-to-local-copy}"
+  exit 1
+fi
+
 echo "Adding path repository $2"
 composer config repositories.$1 --json "{\"type\": \"path\", \"url\": \"$2\", \"options\": {\"symlink\": true } }"
 
