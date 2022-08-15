@@ -28,6 +28,14 @@ linting_php:
   script:
     - time vendor/bin/phpstan analyse -c phpstan.neon
 
+linting_twig:
+  stage: test
+  tags:
+    - docker
+  image: $PHP_IMAGE
+  script:
+    - time php bin/console lint:twig templates
+
 unit_tests_php:
   stage: test
   tags:
