@@ -1,2 +1,3 @@
 eap_security:
   user_entity_class: ~ # Replace with your app user entity class name
+  user_role_entity_class: ~ # Replace with your app user role entity class name
