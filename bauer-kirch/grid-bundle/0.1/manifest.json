@@ -1,0 +1,8 @@
+{
+    "bundles": {
+        "BK\\EAP\\GridBundle\\GridBundle": ["all"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    }
+}
