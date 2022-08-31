@@ -1,0 +1,26 @@
+{
+    "manifests": {
+        "bauer-kirch/grid-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\GridBundle\\GridBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/eap_grid.yaml": {
+                    "contents": [
+                        "eap_grid:",
+                        "  # default_page_size: 24 # Optionally define a default page size"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "3aff1004e340a4d1a212051d54c621922b3ebb46"
+        }
+    }
+}
