@@ -1,0 +1,2 @@
+eap_pdf:
+  pdf_api_url: '%env(PDF_API_URL)%'

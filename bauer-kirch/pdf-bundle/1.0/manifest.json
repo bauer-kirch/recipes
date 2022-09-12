@@ -2,6 +2,9 @@
     "bundles": {
         "BK\\EAP\\PdfBundle\\PdfBundle": ["all"]
     },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
     "env": {
         "PDF_API_URL": "http://browserless:3000/pdf"
     },
