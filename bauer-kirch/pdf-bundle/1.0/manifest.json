@@ -1,5 +1,19 @@
 {
     "bundles": {
         "BK\\EAP\\PdfBundle\\PdfBundle": ["all"]
+    },
+    "env": {
+        "PDF_API_URL": "http://browserless:3000/pdf"
+    },
+    "docker-compose": {
+        "docker-compose.yml": {
+            "browser": [
+                "browserless:",
+                "  image: browserless/chrome:latest",
+                "  ports:",
+                "    - ${BROWSERLESS_PORT:-3000}:3000",
+                ""
+            ]
+        }
     }
 }
