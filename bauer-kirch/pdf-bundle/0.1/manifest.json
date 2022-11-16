@@ -10,12 +10,11 @@
     },
     "docker-compose": {
         "docker-compose.yml": {
-            "browser": [
+            "services": [
                 "browserless:",
                 "  image: browserless/chrome:latest",
                 "  ports:",
-                "    - ${BROWSERLESS_PORT:-3000}:3000",
-                ""
+                "    - ${BROWSERLESS_PORT:-3000}:3000"
             ]
         }
     }

@@ -47,10 +47,8 @@
                 "  command: /var/www/bin/php-messenger-consume.sh",
                 "",
                 "mailhog:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'",
-                ""
-            ],
-            "volumes": ["npm-cache:"]
+                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'"
+            ]
         }
     }
 }

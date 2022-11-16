@@ -1,2 +1,3 @@
 eap_pdf:
+  pdf_generation_mode: browserless
   pdf_api_url: '%env(PDF_API_URL)%'
