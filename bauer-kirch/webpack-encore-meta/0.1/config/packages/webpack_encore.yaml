@@ -40,10 +40,10 @@ framework:
 
 when@dev:
     webpack_encore:
-        output_path: '%kernel.project_dir%/public/webpack-dev'
+        output_path: '%kernel.project_dir%/public/webpack-dev/build'
     framework:
         assets:
-            json_manifest_path: '%kernel.project_dir%/public/webpack-dev/manifest.json'
+            json_manifest_path: '%kernel.project_dir%/public/webpack-dev/build/manifest.json'
 
 #when@prod:
 #    webpack_encore:
