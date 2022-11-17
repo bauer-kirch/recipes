@@ -7,8 +7,8 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    .setOutputPath(Encore.isDev() ? 'public/webpack-dev' : 'public/build')
-    .setPublicPath(Encore.isDev() ? '/webpack-dev' : '/build')
+    .setOutputPath(Encore.isDev() ? 'public/webpack-dev/build' : 'public/build')
+    .setPublicPath(Encore.isDev() ? '/webpack-dev/build' : '/build')
     .configureDevServerOptions((options) => {
         options.hot = true;
         options.host = '0.0.0.0';
@@ -17,7 +17,7 @@ Encore
     })
 
     // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
+    .setManifestKeyPrefix('build/')
 
     /*
      * ENTRY CONFIG
@@ -36,6 +36,17 @@ Encore
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
+
+    .copyFiles([
+        {
+          from: './assets/images',
+          to: 'images/[path][name].[hash:8].[ext]',
+        },
+        {
+          from: './assets/favicon',
+          to: 'images/favicon/[path][name].[ext]',
+        }
+    ])
 
     /*
      * FEATURE CONFIG
