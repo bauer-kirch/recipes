@@ -7,6 +7,9 @@
         "bauer-kirch/base-bundle": [
             "0.1"
         ],
+        "bauer-kirch/crud-bundle": [
+            "0.1"
+        ],
         "bauer-kirch/eap-pack": [
             "0.1"
         ],
