@@ -6,16 +6,6 @@
         "config/": "%CONFIG_DIR%/"
     },
     "env": {
-        "PDF_API_URL": "http://browserless:3000/pdf"
-    },
-    "docker-compose": {
-        "docker-compose.yml": {
-            "services": [
-                "browserless:",
-                "  image: browserless/chrome:latest",
-                "  ports:",
-                "    - ${BROWSERLESS_PORT:-3000}:3000"
-            ]
-        }
+        "PROVIDER": "wkhtmltopdf"
     }
 }
