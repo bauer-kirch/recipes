@@ -1,7 +1,8 @@
 {
     "aliases": {
         "mail": "symfony/mailer",
-        "mailer": "symfony/mailer"
+        "mailer": "symfony/mailer",
+        "pdf": "bauer-kirch/pdf-bundle"
     },
     "recipes": {
         "bauer-kirch/base-bundle": [
@@ -23,7 +24,8 @@
             "0.1"
         ],
         "bauer-kirch/pdf-bundle": [
-            "0.1"
+            "0.1",
+            "0.9"
         ],
         "bauer-kirch/security-bundle": [
             "0.1"
