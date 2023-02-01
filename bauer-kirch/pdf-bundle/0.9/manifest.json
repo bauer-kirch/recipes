@@ -1,0 +1,31 @@
+{
+    "bundles": {
+        "BK\\EAP\\PdfBundle\\PdfBundle": ["all"]
+    },
+    "aliases": ["pdf"],
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/"
+    },
+    "env": {
+        "#1": "Choose one of the generator engines below",
+        "PDF_GENERATOR_DSN": "gotenberg://gotenberg:3000/",
+        "#2": "PDF_GENERATOR_DSN=browserless://browserless:3000/",
+        "#3": "PDF_GENERATOR_DSN=wkhtmltopdf://default/usr/bin/wkhtmltopdf",
+        "#4": "PDF_GENERATOR_DSN=dompdf://default"
+    },
+    "docker-compose": {
+        "docker-compose.yml": {
+            "services": [
+                "gotenberg:",
+                "  image: gotenberg/gotenberg:7",
+                "  ports:",
+                "    - ${PORT_GOTENBERG:-3000}:3000",
+                "",
+                "#browserless:",
+                "#  image: browserless/chrome:latest",
+                "#  ports:",
+                "#    - ${PORT_BROWSERLESS:-3000}:3000"
+            ]
+        }
+    }
+}

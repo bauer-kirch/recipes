@@ -1,0 +1,2 @@
+eap_pdf:
+  pdf_generator_dsn: '%env(resolve:PDF_GENERATOR_DSN)%'
