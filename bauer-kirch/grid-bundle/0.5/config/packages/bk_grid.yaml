@@ -1,0 +1,3 @@
+bk_grid:
+  secret: '%env(APP_SECRET)%'
+  # default_page_size: 24 # Optionally define a default page size

@@ -1,0 +1,3 @@
+grid_bundle_controllers:
+  resource: ../../vendor/bauer-kirch/grid-bundle/src/Controller/
+  type: annotation
