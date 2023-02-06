@@ -1,6 +1,6 @@
 {
     "bundles": {
-        "BK\\EAP\\PdfBundle\\PdfBundle": ["all"]
+        "BK\\EAP\\PdfBundle\\BkPdfBundle": ["all"]
     },
     "aliases": ["pdf"],
     "copy-from-recipe": {
