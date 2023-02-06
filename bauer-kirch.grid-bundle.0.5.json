@@ -1,0 +1,35 @@
+{
+    "manifests": {
+        "bauer-kirch/grid-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\GridBundle\\BkGridBundle": [
+                        "all"
+                    ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%/"
+                }
+            },
+            "files": {
+                "config/packages/bk_grid.yaml": {
+                    "contents": [
+                        "bk_grid:",
+                        "  secret: '%env(APP_SECRET)%'",
+                        "  # default_page_size: 24 # Optionally define a default page size"
+                    ],
+                    "executable": false
+                },
+                "config/routes/grid_bundle.yaml": {
+                    "contents": [
+                        "grid_bundle_controllers:",
+                        "  resource: ../../vendor/bauer-kirch/grid-bundle/src/Controller/",
+                        "  type: annotation"
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "134723cb8ae8a00bc6994b92498101f5e706f922"
+        }
+    }
+}
