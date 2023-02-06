@@ -29,7 +29,8 @@
             "0.9"
         ],
         "bauer-kirch/security-bundle": [
-            "0.1"
+            "0.1",
+            "0.2"
         ],
         "bauer-kirch/webpack-encore-meta": [
             "0.1"
