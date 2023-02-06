@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "bauer-kirch/crud-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\CrudBundle\\BkCrudBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "eab05126a79c92cdffd33a3ceb824edb55c62bb2"
+        }
+    }
+}
