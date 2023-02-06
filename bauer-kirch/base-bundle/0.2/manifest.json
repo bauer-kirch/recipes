@@ -1,0 +1,5 @@
+{
+    "bundles": {
+        "BK\\EAP\\BaseBundle\\BkBaseBundle": ["all"]
+    }
+}
