@@ -23,6 +23,7 @@ deploy_prod:
 
 deploy_staging:
   extends: .deploy_template
+  allow_failure: true # Allow pipeline to become "green" even if the deploy job was not triggered
   environment:
     name: staging
     url: https://staging.my-site.com
