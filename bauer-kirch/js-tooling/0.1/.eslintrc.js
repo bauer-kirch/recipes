@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'plugin:cypress/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
@@ -14,7 +13,7 @@ module.exports = {
     // prettier needs to go last
     'prettier',
   ],
-  plugins: ['vue', 'jest', 'cypress', 'prettier'],
+  plugins: ['vue', 'jest', 'prettier'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 2019,
