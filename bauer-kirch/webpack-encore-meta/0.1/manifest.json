@@ -5,6 +5,7 @@
     ],
     "copy-from-recipe": {
         ".gitlab-ci/": ".gitlab-ci/",
+        "assets/": "assets/",
         "config/": "%CONFIG_DIR%/",
         "docker/": "docker/",
         "package.json": "package.json",
