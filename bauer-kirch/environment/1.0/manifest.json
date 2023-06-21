@@ -7,7 +7,7 @@
         "docker/": "docker/",
         ".gitlab-ci.yml": ".gitlab-ci.yml",
         ".gitkeep": "/var/certs/.gitkeep",
-        "assets/": "assets/"
+        "deploy.php": "deploy.php"
     },
     "docker-compose": {
         "docker-compose.yml": {

@@ -1,0 +1,30 @@
+.deploy_template:
+  allow_failure: false
+  stage: deploy
+  cache: []
+  when: manual
+  needs:
+    - build_npm
+  image: "git.bauer-kirch.de:5001/eap/php/deployer:7"
+  before_script:
+    - "if [ ! -f public/build/manifest.json ]; then echo 'Error: frontend artifacts not found!'; exit 1; fi"
+    - "ssh-add <(echo \"$SSH_PRIVATE_KEY\")"
+    - ssh-add-known-host "$SSH_KNOWN_HOSTS"
+
+deploy_prod:
+  extends: .deploy_template
+  only:
+    - tags
+  environment:
+    name: prod
+    url: https://www.my-site.com
+  script:
+    - dep deploy stage=prod
+
+deploy_staging:
+  extends: .deploy_template
+  environment:
+    name: staging
+    url: https://staging.my-site.com
+  script:
+    - dep deploy stage=staging
