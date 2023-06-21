@@ -14,7 +14,7 @@
         "docker-compose.yml": {
             "services": [
                 "webpack:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
+                "  image: 'git.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest'",
                 "  volumes:",
                 "    - ./:/var/www/app/:cached",
                 "    - npm-cache:/root/.npm:cached"

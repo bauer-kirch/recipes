@@ -13,7 +13,7 @@
         "docker-compose.yml": {
             "services": [
                 "nginx:",
-                "  image: gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/nginx:latest",
+                "  image: git.bauer-kirch.de:5001/eap/php/docker-aux/nginx:latest",
                 "  ports:",
                 "    - ${PORT_NGINX:-80}:80",
                 "    - ${PORT_NGINX_SSL:-443}:443",
@@ -23,7 +23,7 @@
                 "    - ./var/certs:/etc/ssl/certs:cached",
                 "",
                 "php:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:php-8.1'",
+                "  image: 'git.bauer-kirch.de:5001/eap/php/docker/php:php-8.2'",
                 "  volumes:",
                 "    - ./:/var/www/app/:cached",
                 "    - ./docker/php/container-started.sh:/var/www/bin/container-started.sh",
@@ -37,7 +37,7 @@
                 "    APP_CACHE_DIR: /tmp/symfony_cache",
                 "",
                 "php_messenger:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:php-8.1'",
+                "  image: 'git.bauer-kirch.de:5001/eap/php/docker/php:php-8.2'",
                 "  volumes:",
                 "    - ./:/var/www/app/:cached",
                 "    - ./docker/php/php-messenger-consume.sh:/var/www/bin/php-messenger-consume.sh",
@@ -48,7 +48,7 @@
                 "  command: /var/www/bin/php-messenger-consume.sh",
                 "",
                 "mailhog:",
-                "  image: 'gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'"
+                "  image: 'git.bauer-kirch.de:5001/eap/php/docker-aux/mailhog:latest'"
             ]
         }
     }

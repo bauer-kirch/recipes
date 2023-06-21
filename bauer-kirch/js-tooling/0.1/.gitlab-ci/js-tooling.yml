@@ -1,5 +1,5 @@
 variables:
-  NODE_IMAGE: "gitlab.lan.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest"
+  NODE_IMAGE: "git.bauer-kirch.de:5001/eap/php/docker-aux/webpack:latest"
 
 .dependencies_cache:
   cache:

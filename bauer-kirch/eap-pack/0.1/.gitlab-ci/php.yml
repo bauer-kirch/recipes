@@ -1,5 +1,5 @@
 variables:
-  PHP_IMAGE: "gitlab.lan.bauer-kirch.de:5001/eap/php/docker/php:php-8.1"
+  PHP_IMAGE: "git.bauer-kirch.de:5001/eap/php/docker/php:php-8.2"
   SYMFONY_PHPUNIT_DIR: "vendor/bin/.phpunit"
 
 setup_php:
