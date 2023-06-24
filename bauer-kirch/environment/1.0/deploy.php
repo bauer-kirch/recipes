@@ -7,6 +7,9 @@ require 'eap-recipe.php';
 //   task('database:update-schema', function () { ... });
 //   after('database:migrate', 'database:update-schema');
 
+// add the following line if your project uses Symfony Messenger workers:
+//   after('deploy:publish', 'workers:terminate');
+
 
 // Hosts
 host('prod.my-site.com')
