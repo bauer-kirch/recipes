@@ -9,14 +9,14 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
-    'plugin:vue/recommended',
+    'plugin:vue/vue3-recommended',
     // prettier needs to go last
     'prettier',
   ],
   plugins: ['vue', 'jest', 'prettier'],
   parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2023,
     sourceType: 'module',
   },
   rules: {
