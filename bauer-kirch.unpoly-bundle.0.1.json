@@ -1,0 +1,23 @@
+{
+    "manifests": {
+        "bauer-kirch/unpoly-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\UnpolyBundle\\BkUnpolyBundle": [
+                        "all"
+                    ]
+                },
+                "add-lines": [
+                    {
+                        "file": "assets/app.js",
+                        "content": "import '@bauer-kirch/unpoly-bundle';",
+                        "position": "top",
+                        "warn_if_missing": true
+                    }
+                ]
+            },
+            "files": [],
+            "ref": "7bbb3c3fda6275e87a7bd82e2883a7190047434e"
+        }
+    }
+}
