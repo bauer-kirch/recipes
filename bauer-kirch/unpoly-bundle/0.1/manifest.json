@@ -1,0 +1,13 @@
+{
+    "bundles": {
+        "BK\\EAP\\UnpolyBundle\\BkUnpolyBundle": ["all"]
+    },
+    "add-lines": [
+        {
+            "file": "assets/app.js",
+            "content": "import '@bauer-kirch/unpoly-bundle';",
+            "position": "top",
+            "warn_if_missing": true
+        }
+    ]
+}
