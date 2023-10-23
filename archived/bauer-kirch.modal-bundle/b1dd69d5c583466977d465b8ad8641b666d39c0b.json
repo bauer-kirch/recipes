@@ -1,0 +1,15 @@
+{
+    "manifests": {
+        "bauer-kirch/modal-bundle": {
+            "manifest": {
+                "bundles": {
+                    "BK\\EAP\\ModalBundle\\BkModalBundle": [
+                        "all"
+                    ]
+                }
+            },
+            "files": [],
+            "ref": "b1dd69d5c583466977d465b8ad8641b666d39c0b"
+        }
+    }
+}

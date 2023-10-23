@@ -26,6 +26,9 @@
         "bauer-kirch/js-tooling": [
             "0.1"
         ],
+        "bauer-kirch/modal-bundle": [
+            "0.1"
+        ],
         "bauer-kirch/pdf-bundle": [
             "0.1",
             "0.9"

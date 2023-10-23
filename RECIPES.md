@@ -10,6 +10,7 @@ Additional recipes can be found on the [Contrib Recipes Repository](https://gith
 | [bauer-kirch/environment](https://packagist.org/packages/bauer-kirch/environment) | [1.0](bauer-kirch/environment/1.0) |  |
 | [bauer-kirch/grid-bundle](https://packagist.org/packages/bauer-kirch/grid-bundle) | [0.5](bauer-kirch/grid-bundle/0.5) |  |
 | [bauer-kirch/js-tooling](https://packagist.org/packages/bauer-kirch/js-tooling) | [0.1](bauer-kirch/js-tooling/0.1) |  |
+| [bauer-kirch/modal-bundle](https://packagist.org/packages/bauer-kirch/modal-bundle) | [0.1](bauer-kirch/modal-bundle/0.1) |  |
 | [bauer-kirch/pdf-bundle](https://packagist.org/packages/bauer-kirch/pdf-bundle) | [0.9](bauer-kirch/pdf-bundle/0.9) | `pdf` |
 | [bauer-kirch/security-bundle](https://packagist.org/packages/bauer-kirch/security-bundle) | [0.2](bauer-kirch/security-bundle/0.2) |  |
 | [bauer-kirch/unpoly-bundle](https://packagist.org/packages/bauer-kirch/unpoly-bundle) | [0.1](bauer-kirch/unpoly-bundle/0.1) |  |
